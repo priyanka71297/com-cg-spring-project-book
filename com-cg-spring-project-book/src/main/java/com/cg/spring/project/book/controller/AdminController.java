@@ -25,6 +25,7 @@ import com.cg.spring.project.book.service.UserService;
 @CrossOrigin(origins = "*")
 //@CrossOrigin(origins = "http://localhost:3000")
 public class AdminController {
+	
 
 	// Use ResponseEntity to all the methods in controller classes.
 

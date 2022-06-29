@@ -29,14 +29,14 @@ public class BookController {
 	@Autowired
 	private BookServiceImpl bookService;
 
-	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	// http://localhost:7777/book/get-all-books
 	@GetMapping("/get-all-books")
 	public ResponseEntity<List<Book>> getAllBooks() {
 		List<Book> bookList = bookService.getAllBooks();
 		for (Book bookTemp : bookList)
-			LOG.info(bookTemp.toString());
+			logger.info(bookTemp.toString());
 		HttpStatus status = HttpStatus.OK;
 		ResponseEntity<List<Book>> response = new ResponseEntity<>(bookList, status);
 		return response;
@@ -45,7 +45,7 @@ public class BookController {
 	// http://localhost:7777/book/get-book-by-bookId/{bookId}
 	@GetMapping("/get-book-by-bookId/{bookId}")
 	public ResponseEntity<Book> getBookByBookId(@PathVariable(name = "bookId") int bookId) {
-		LOG.info(Integer.toString(bookId));
+		logger.info(Integer.toString(bookId));
 		Book book = bookService.getBookById(bookId);
 		HttpStatus status = HttpStatus.OK;
 		ResponseEntity<Book> response = new ResponseEntity<>(book, status);
@@ -55,7 +55,7 @@ public class BookController {
 	// http://localhost:7777/book/get-book-by-bookName/{bookName}
 	@GetMapping("/get-book-by-bookName/{bookName}")
 	public ResponseEntity<List<Book>> getBookByBookName(@PathVariable(name = "bookName") String bookName) {
-		LOG.info(bookName);
+		logger.info(bookName);
 		HttpStatus status = HttpStatus.OK;
 		ResponseEntity<List<Book>> response = new ResponseEntity<>(bookService.getBookByName(bookName), status);
 		return response;
@@ -64,7 +64,7 @@ public class BookController {
 	// http://localhost:7777/book/add-book
 	@PostMapping("/add-book")
 	public ResponseEntity<Book> addBook(@RequestBody Book book) {
-		LOG.info(book.toString());
+		logger.info(book.toString());
 		HttpStatus status = HttpStatus.CREATED; // 201
 		ResponseEntity<Book> response = new ResponseEntity<>(bookService.addBook(book), status);
 		return response;
@@ -73,7 +73,7 @@ public class BookController {
 	// http://localhost:7777/book/update-book
 	@PutMapping("/update-book")
 	public ResponseEntity<Book> updateBook(@RequestBody Book book) {
-		LOG.info(book.toString());
+		logger.info(book.toString());
 		HttpStatus status = HttpStatus.CREATED; // 201
 		ResponseEntity<Book> response = new ResponseEntity<>(bookService.updateBook(book), status);
 		return response;
@@ -82,7 +82,7 @@ public class BookController {
 	// http://localhost:7777/book/delete-book
 	@DeleteMapping("/delete-book/{bookId}")
 	public ResponseEntity<Book> deleteBook(@PathVariable(name = "bookId") int bookId) {
-		LOG.info(Integer.toString(bookId));
+		logger.info(Integer.toString(bookId));
 		HttpStatus status = HttpStatus.OK;
 		ResponseEntity<Book> response = new ResponseEntity<>(bookService.deleteBook(bookId), status);
 		return response;

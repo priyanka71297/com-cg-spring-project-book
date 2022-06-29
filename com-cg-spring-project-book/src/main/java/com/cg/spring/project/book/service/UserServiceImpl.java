@@ -15,7 +15,7 @@ import com.cg.spring.project.book.model.User;
 	import com.cg.spring.project.book.repository.UserRepository;
 
 	@Service
-	public class UserService implements UserService {
+	public class UserServiceImpl implements UserService {
 
 		private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

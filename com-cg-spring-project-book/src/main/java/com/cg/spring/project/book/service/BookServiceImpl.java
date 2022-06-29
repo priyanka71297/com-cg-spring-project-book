@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.spring.project.book.exception.BookNotFoundException;
 import com.cg.spring.project.book.model.Book;
-import com.cg.spring.project.book.model.BookDTO;
+import com.cg.spring.project.book.dto.BookDTO;
 import com.cg.spring.project.book.repository.BookRepository;
 import com.cg.spring.project.book.repository.UserRepository;
 
@@ -58,7 +58,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	public Book addBook(Book book) {
-		logger.info(Book.toString());
+		logger.info(book.toString());
 		if (book.getAuthor() != null)
 
 			AuthorService.getAuthorByBookName(book.getAuthor().getBookName());
@@ -67,8 +67,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	public Book updateBook(Book book) {
-		logger.info(Book.toString());
-		this.getBookById(Book.getBookId());
+		logger.info(book.toString());
+		this.getBookById(book.getBookId());
 
 		return bookRepository.save(book);
 	}

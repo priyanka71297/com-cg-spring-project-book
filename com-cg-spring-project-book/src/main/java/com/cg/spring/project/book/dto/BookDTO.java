@@ -9,6 +9,21 @@ public class BookDTO {
 	private String category;
 	private float rating;
 	
+	public BookDTO(int bookId, String bookName, Author author, String category, float rating) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.author = author;
+		this.category = category;
+		this.rating = rating;
+	}
+
+	
+	public BookDTO() {
+		super();
+	}
+
+
 	public int getBookId() {
 		return bookId;
 	}

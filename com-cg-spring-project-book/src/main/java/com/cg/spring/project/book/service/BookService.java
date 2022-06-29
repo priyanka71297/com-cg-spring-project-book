@@ -3,6 +3,7 @@ package com.cg.spring.project.book.service;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.cg.spring.project.book.dto.BookDTO;
 import com.cg.spring.project.book.model.Book;
 
 public interface BookService {
