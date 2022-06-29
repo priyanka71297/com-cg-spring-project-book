@@ -24,9 +24,10 @@ import com.cg.spring.project.book.model.User;
 
 		User loggedInUser;
 
+		
 		@Override
-		public List<AppUser> getAllUsers() {
-			List<AppUser> userList = UserRepository.findAll();
+		public List<User> getAllUsers() {
+			List<User> userList = UserRepository.findAll();
 			if (userList.isEmpty()) {
 				String exceptionMessage = "AppUsers don't exist in the database.";
 				LOG.warn(exceptionMessage);
@@ -79,20 +80,20 @@ import com.cg.spring.project.book.model.User;
 			} else {
 				String exceptionMessage = "User with userName " + userName + " is not logged in.";
 				LOG.warn(exceptionMessage);
-				throw new AppUserNotFoundException(exceptionMessage);
+				throw new UserNotFoundException(exceptionMessage);
 			}
 		}
 
 		@Override
-		public AppUser updateUser(AppUser appUser) {
-			Optional<AppUser> userOptional = appUserRepository.findById(appUser.getUserName());
+		public User updateUser(User appUser) {
+			Optional<User> userOptional = UserRepository.findById(appUser.getUserName());
 			if (userOptional.isPresent()) {
 				LOG.info(userOptional.get().toString());
-				return appUserRepository.save(appUser);
+				return UserRepository.save(appUser);
 			} else {
 				String exceptionMessage = "AppUser with userName " + appUser.getUserName() + " not found!";
 				LOG.warn(exceptionMessage);
-				throw new AppUserNotFoundException(exceptionMessage);
+				throw new UserNotFoundException(exceptionMessage);
 			}
 		}
 
@@ -106,4 +107,3 @@ import com.cg.spring.project.book.model.User;
 			return null;
 		}
 	}
-}
